@@ -6,10 +6,16 @@ import axios from 'axios'
 const route = useRoute()
 const router = useRouter()
 
+
+const typesImg = import.meta.glob('@/assets/icons_types/*.png') 
+
+console.log('Rutas generadas por import',typesImg)
+
 const poke = ref({})
 const back = () => {
     router.push('/pokemons')
 }
+
 
 const getData = async () => {
     try {
@@ -26,20 +32,16 @@ const getData = async () => {
 getData()
 
 function getTypeIcon(typeName) {
-    // Cargamos todas las imágenes disponibles al inicio
-    const icons = import.meta.glob('@/assets/icons_types/*.png', { eager: true });
+    console.log(typeName)
+    // const typeImg = `@/assets/icons_types/${typeName}.png`
+    const typeImg = `/src/assets/icons_types/${typeName}.png`
+    console.log(typeImg)
+    console.log(typeof(typeImg))
 
-    switch (typeName) {
-        case 'fire':
-            return icons['/src/assets/icons_types/fire.png'];
-        case 'water':
-            return icons['/src/assets/icons_types/water.png'];
-        case 'grass':
-            return icons['/src/assets/icons_types/grass.png'];
-        default:
-            return icons['/src/assets/icons_types/rock.png'];
-    }
+    return encodeURI(typeImg)
+    //return new URL (typeImg, import.meta.url).href
 }
+
 
 </script>
 
@@ -58,13 +60,12 @@ function getTypeIcon(typeName) {
                     <span class="badge text-bg-primary rounded-pill">{{ poke.id }}</span>
                 </li>
                 <li class="list-group-item ">Tipos:
-                    <p v-for="types in poke.types"> {{ types?.type?.name }}
-                    <!-- <img src="../assets/icons_types/dragon.png"  alt=""
-                        width="30" height="30">  -->
-                    <!-- <img v-for="types in poke.types" :src="getTypeIcon(`${types.type.name}`)" alt="type"> -->
-                    <img :src="getTypeIcon(types?.type?.name)" alt="type">
+                    <p v-for="(types, index) in poke.types" key="index"> {{ types?.type?.name }}
+                        <img :src="getTypeIcon(types?.type?.name)" alt="type" width="45px" height="45px">
+                        <!-- <img src="@/assets/icons_types/poison.png" width="45px" height="45px">
+                        <img src="@/assets/icons_types/poison.png" alt="type" width="45px" height="45px"> -->
 
-                </p>
+                    </p>
                 </li>
             </ul>
         </div>
