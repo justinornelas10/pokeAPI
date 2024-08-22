@@ -8,8 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <nav class="navbar bg-danger ">
       <div class="container-fluid">
         <RouterLink class="navbar-brand" to="/">
-          <img src="@/assets/poke2.svg" alt="logoNavBrand" 
-          class="d-inline-block align-text-top d-absolute">
+          <img src="@/assets/poke2.svg" alt="logoNavBrand" class="d-inline-block align-text-top d-absolute">
         </RouterLink>
         <div class="d-flex me-5">
           <RouterLink to="/" class="btn btn-outline-info me-4">Home</RouterLink>
@@ -21,8 +20,9 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </nav>
   </header>
-
-  <RouterView />
+  <div class="container text-center">
+    <RouterView />
+  </div>
 </template>
 
 <style></style>
