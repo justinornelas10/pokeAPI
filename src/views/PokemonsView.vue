@@ -3,9 +3,6 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useGetData } from "@/composables/getData";
 
-// const route = useRoute()
-// const router = useRouter()
-
 
 const { data, getData, loading, error } = useGetData()
 

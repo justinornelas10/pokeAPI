@@ -12,7 +12,9 @@ import { RouterLink, RouterView } from 'vue-router'
         </RouterLink>
         <div class="d-flex me-5">
           <RouterLink to="/" class="btn btn-outline-info me-4">Home</RouterLink>
-          <RouterLink to="/pokemons" class="btn btn-outline-info">Pokemons</RouterLink>
+          <RouterLink to="/pokemons" class="btn btn-outline-info me-4">Pokemons</RouterLink>
+          <RouterLink to="/favorites" class="btn btn-outline-info">Favoritos</RouterLink>
+
         </div>
 
 
@@ -20,7 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </nav>
   </header>
-  <div class="container text-center">
+  <div class="container-xl text-center">
     <RouterView />
   </div>
 </template>
